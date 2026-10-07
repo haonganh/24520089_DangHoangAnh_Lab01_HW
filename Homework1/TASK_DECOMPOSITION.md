@@ -18,6 +18,17 @@
 - Add Content Security Policy
 - Remove all inline onclick/onchange handlers
 - Bind events inside script.js
+## M3 - CSP & Event Security
+
+### Implementation
+- Added Content Security Policy.
+- Restricted scripts and styles to same-origin resources.
+- Verified that no inline event handlers are used.
+
+### Audit Result
+- No onclick, onchange, or onsubmit handlers were found.
+- No CSP violations were reported in the browser console.
+
 
 ## M4 - Lighthouse Optimization
 - Optimize images
