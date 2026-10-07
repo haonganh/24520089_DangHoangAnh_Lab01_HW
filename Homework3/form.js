@@ -10,6 +10,8 @@ let formState = FORM_STATE.IDLE;
 const form = document.querySelector("#registration-form");
 const statusElement = document.querySelector("#form-status");
 const submitButton = document.querySelector("#submit-button");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
 
 
 function setFormState(newState) {
@@ -52,12 +54,23 @@ form.addEventListener("submit", async (event) => {
         return;
     }
 
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if (!name || !email) {
+        setFormState(FORM_STATE.ERROR);
+        return;
+    }
+
     setFormState(FORM_STATE.SUBMITTING);
 
     try {
         await submitRegistration();
 
         setFormState(FORM_STATE.SUCCESS);
+
+        statusElement.textContent =
+            `Registration successful. Welcome, ${name}.`;
     } catch {
         setFormState(FORM_STATE.ERROR);
     }
