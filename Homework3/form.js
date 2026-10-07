@@ -9,10 +9,14 @@ let formState = FORM_STATE.IDLE;
 
 const form = document.querySelector("#registration-form");
 const statusElement = document.querySelector("#form-status");
+const submitButton = document.querySelector("#submit-button");
 
 
 function setFormState(newState) {
     formState = newState;
+
+    submitButton.disabled =
+        newState === FORM_STATE.SUBMITTING;
 
     switch (newState) {
         case FORM_STATE.IDLE:
@@ -43,6 +47,10 @@ function submitRegistration() {
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (formState === FORM_STATE.SUBMITTING) {
+        return;
+    }
 
     setFormState(FORM_STATE.SUBMITTING);
 
