@@ -12,3 +12,10 @@ function playSound(key) {
     const audio = new Audio(pad.dataset.sound);
     audio.play();
 }
+window.addEventListener("keydown", (event) => {
+    if (event.repeat) {
+        return;
+    }
+
+    playSound(event.key);
+});
