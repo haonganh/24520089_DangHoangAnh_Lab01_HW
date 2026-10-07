@@ -35,3 +35,6 @@
 - Remove unnecessary resources
 - Fix accessibility/performance problems
 - Target Lighthouse score: 100
+### Audit Result
+- Lighthouse audit score: 100.
+- No additional asset optimization was required.
